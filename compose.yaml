@@ -26,14 +26,6 @@ services:
       timeout: 5s
       retries: 10
 
-  migrate:
-    build: .
-    env_file: ${ENV_FILE:-.env}
-    command: ["/app/.venv/bin/alembic", "upgrade", "head"]
-    depends_on:
-      db:
-        condition: service_healthy
-    restart: "no"
 
   bot:
     build: .
