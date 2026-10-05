@@ -1,0 +1,38 @@
+[project]
+name = "inspection-telegram-bot"
+version = "0.1.0"
+description = "Telegram bot for inspection accounting and Excel exports"
+requires-python = ">=3.13,<3.14"
+dependencies = [
+  "aiogram>=3.29.1,<4",
+  "alembic>=1.18.5,<2",
+  "asyncpg>=0.30.0,<1",
+  "openpyxl>=3.1.5,<4",
+  "pydantic-settings>=2.10.1,<3",
+  "redis>=6.4.0,<7",
+  "sqlalchemy[asyncio]>=2.0.51,<3",
+]
+
+[dependency-groups]
+dev = [
+  "aiosqlite>=0.21.0,<1",
+  "pytest>=8.4.1,<9",
+  "pytest-asyncio>=1.1.0,<2",
+  "ruff>=0.12.0,<1",
+]
+
+[tool.uv]
+package = false
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+testpaths = ["tests"]
+pythonpath = ["."]
+
+[tool.ruff]
+target-version = "py313"
+line-length = 100
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B", "ASYNC"]
+ignore = ["E501"]
